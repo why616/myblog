@@ -12,10 +12,13 @@ import {
   faQuestionCircle,
   faCube,
   faPaw,
-  faBullseye
+  faBullseye,
+  faCandyCane,
+  faCannabis,
+  faCommentAlt
           } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-// import './assets/css/reset.css';
+import './assets/css/reset.css';
 
 library.add(
   faFeatherAlt,
@@ -26,7 +29,10 @@ library.add(
   faQuestionCircle,
   faCube,
   faPaw,
-  faBullseye
+  faBullseye,
+  faCandyCane,
+  faCannabis,
+  faCommentAlt
   );
 Vue.component('font-awesome-icon',FontAwesomeIcon);
 

@@ -27,3 +27,19 @@ button {
     outline: none;
     border: none;
 }
+*::-webkit-scrollbar {
+    width: 8px!important;
+    height: 8px!important;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #999!important;
+}
+*::-webkit-scrollbar-track-piece {
+    background: #eee!important;
+}
+::selection {
+    background: #344449;
+    color: #fff;
+    text-shadow: none;
+}

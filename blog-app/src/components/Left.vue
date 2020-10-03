@@ -230,28 +230,29 @@ export default {
 
 <style lang="less" scoped>
 aside {
-//   width: 220px;
+  //   width: 220px;
 }
-.hidden-scroll{
-    width: 220px;
-    top: 50px;
-    overflow: hidden;
-     position: fixed;
-     bottom: 0;
+.hidden-scroll {
+  width: 220px;
+  top: 50px;
+  overflow: hidden;
+  position: fixed;
+//   height: 100%;
+  bottom: 0;
 }
 .aside-wrapper {
   width: 320px;
   background-color: rgb(58, 63, 81);
   height: 100%;
   overflow-y: scroll;
-  &>*{
-       width: 220px;
-  }  
+  & > * {
+    width: 220px;
+  }
   .header {
     color: rgb(234, 235, 237);
     line-height: 1.5;
     font-size: 14px;
-   padding: 30px 0;
+    padding: 30px 0;
     text-align: center;
     border-bottom: 1px solid #2e3344;
 
@@ -302,10 +303,15 @@ aside {
           li {
             &:hover {
               background-color: rgb(58, 63, 81);
-              color: #ffffff;
+               span {
+                 color: #ffffff;
+               }
             }
-            font-size: 14px;
-            color: rgb(180, 182, 189);
+            span {
+              font-size: 14px;
+              color: rgb(180, 182, 189);
+            }
+
             svg {
               padding: 0 10px 0 20px;
             }
