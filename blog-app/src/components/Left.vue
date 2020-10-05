@@ -21,103 +21,42 @@
                 <font-awesome-icon icon="cube"></font-awesome-icon>
                 <span>分类</span>
               </a>
-              <ul :class="{ show: sortShow }">
+              <ul :class="{ show: sortShow }" @click.stop="changeShowContent(true)">
                 <li>
-                  <a>
+                  <router-link to="/html">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>html</span>
-                  </a>
+                    <span>Html</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a>
+                  <router-link to="">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>css</span>
-                  </a>
+                    <span>Css</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a>
+                  <router-link to="">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>js</span>
-                  </a>
+                    <span>Js</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a>
+                  <router-link to="">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>vue</span>
-                  </a>
+                    <span>Vue</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a>
+                  <router-link to="">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>node.js</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <router-link to="/bzd">
-                <font-awesome-icon icon="question-circle"></font-awesome-icon>
-                <span>不知道还能填啥</span>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/wbu">
-                <font-awesome-icon icon="paw"></font-awesome-icon>
-                <span>以后会用上的吧</span>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="five">
-                <font-awesome-icon icon="feather-alt"></font-awesome-icon>
-                <span>五个选项好看</span>
-              </router-link>
-            </li>
-          </ul>
-        </div>
-        <div class="nav">
-          <h3>导航</h3>
-          <ul class="">
-            <li>
-              <router-link to="/">
-                <font-awesome-icon icon="home"></font-awesome-icon>
-                <span>首页</span>
-              </router-link>
-            </li>
-            <li @click="toggleShow" :class="{ show: sortShow }">
-              <a to="/">
-                <font-awesome-icon icon="cube"></font-awesome-icon>
-                <span>分类</span>
-              </a>
-              <ul :class="{ show: sortShow }">
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>html</span>
-                  </a>
+                    <span>Node.js</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a>
+                  <router-link to="">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>css</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>js</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>vue</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>node.js</span>
-                  </a>
+                    <span>面试题</span>
+                  </router-link>
                 </li>
               </ul>
             </li>
@@ -142,71 +81,7 @@
           </ul>
         </div>
         <div class="nav">
-          <h3>导航</h3>
-          <ul class="">
-            <li>
-              <router-link to="/">
-                <font-awesome-icon icon="home"></font-awesome-icon>
-                <span>首页</span>
-              </router-link>
-            </li>
-            <li @click="toggleShow" :class="{ show: sortShow }">
-              <a to="/">
-                <font-awesome-icon icon="cube"></font-awesome-icon>
-                <span>分类</span>
-              </a>
-              <ul :class="{ show: sortShow }">
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>html</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>css</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>js</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>vue</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
-                    <span>node.js</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <router-link to="/bzd">
-                <font-awesome-icon icon="question-circle"></font-awesome-icon>
-                <span>不知道还能填啥</span>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/wbu">
-                <font-awesome-icon icon="paw"></font-awesome-icon>
-                <span>以后会用上的吧</span>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="five">
-                <font-awesome-icon icon="feather-alt"></font-awesome-icon>
-                <span>五个选项好看</span>
-              </router-link>
-            </li>
-          </ul>
+
         </div>
       </div>
     </div>
@@ -214,16 +89,19 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
       sortShow: false,
+      html_page:""
     };
   },
   methods: {
     toggleShow() {
       this.sortShow = !this.sortShow;
     },
+    ...mapMutations(['changeShowContent'])
   },
 };
 </script>
@@ -267,6 +145,7 @@ aside {
     }
   }
   .nav {
+    border-bottom: 1px solid #2e3344;
     h3 {
       font-size: 14px;
       color: rgb(139, 142, 153);
@@ -294,9 +173,16 @@ aside {
         }
         ul {
           &.show {
-            padding-top: 10px;
-            height: 195px;
+            li:first-child{
+               padding-top: 15px;
+            }
+           
+            height: auto;
+            opacity: 1;
+            
           }
+          
+          opacity: 0;
           overflow: hidden;
           height: 0;
 

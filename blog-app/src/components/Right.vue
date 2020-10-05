@@ -21,25 +21,25 @@
       <div class="hot" :class="{ active: show == 0 }">
         <h3 class="header-name">随机文章</h3>
         <article>
-          <img src="../../../assets/img/akl.png" alt="" />
+          <img src="../assets/img/akl.png" alt="" />
           <section>文字溢出时，使用...表示还有其他的省略了</section>
         </article>
         <article>
-          <img src="../../../assets/img/akl.png" alt="" />
+          <img src="../assets/img/akl.png" alt="" />
           <section>white-space 设置文本内空格的效果</section>
         </article>
       </div>
       <div class="sentence" :class="{ active: show == 1 }">
         <h3 class="header-name">每日一句</h3>
         <article>
-          <img src="../../../assets/img/akl.png" alt="" />
+          <img src="../assets/img/akl.png" alt="" />
           <section>消失吧...随风消散吧！</section>
         </article>
       </div>
       <div class="latest-reply" :class="{ active: show == 2 }">
           <h3 class="header-name">最新留言</h3>
         <article>
-          <img src="../../../assets/img/akl.png" alt="" />
+          <img src="../assets/img/akl.png" alt="" />
           <section>你是不是有点那啥...有点二，中二的那种...</section>
         </article>
       </div>
@@ -49,9 +49,12 @@
 
 <script>
 export default {
+    created(){
+        console.log("侧边栏重新加载啦");
+    },
   data() {
     return {
-      show: 2,
+      show: 0,
       num0: 0,
       num1: 1,
       num2: 2
@@ -74,13 +77,12 @@ export default {
 <style lang="less" scoped>
 .right {
   flex-shrink: 0;
-  
   width: 240px;
   flex-basis: 240px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.7);
   transition: all 0.5s;
   &:hover {
-    background-color: #ffffff;
+    background-color:rgba(255, 255, 255, 0.9);
   }
   .nav {
     .nav-item {

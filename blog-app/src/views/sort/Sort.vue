@@ -9,7 +9,7 @@
 
 <script>
 
-import right from './components/Right.vue';
+import right from '@/components/Right.vue';
 
 
 export default {

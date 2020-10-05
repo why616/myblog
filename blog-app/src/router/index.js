@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/components/Home/Home.vue';
-import Content from '@/components/Home/components/Content.vue';
-import Sort from '@/components/Home/Sort.vue';
+import Home from '@/views/Home.vue';
+import ArticalContent from '@/components/ArticalContent.vue';
+// import Sort from '@/views/Sort.vue';
+import Main from '@/views/Main.vue'
+import Html from '@/views/sort/Html.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,23 +16,95 @@ const routes = [
     children:[
       {
         path:'',
-        name:'Content',
-        component: Content
+        name:'Main',
+        component: Main
       }
     ]
   },
+  //html
   {
-    path: '/sort',
-    name: 'Sort',
-    component: Sort,
+    path: '/html',
+    name: 'Html',
+    component: Html,
     children:[
       {
-        path:'',
-        name:'Content',
-        component: Content
+        path:':id',
+        name:'ArticalContent',
+        component: ArticalContent
       }
     ]
   },
+  // //css
+  // {
+  //   path: '/css',
+  //   name: 'Css',
+  //   component: Css,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'Content',
+  //       component: Content
+  //     }
+  //   ]
+  // },
+  // //js
+  // {
+  //   path: '/js',
+  //   name: 'Js',
+  //   component: Js,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'Content',
+  //       component: Content
+  //     }
+  //   ]
+  // },
+  // //vue
+  // {
+  //   path: '/vue',
+  //   name: 'Vue',
+  //   component: Vue,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'Content',
+  //       component: Content
+  //     }
+  //   ]
+  // },
+  // //node
+  // {
+  //   path: '/node',
+  //   name: 'Node',
+  //   component: Node,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'Content',
+  //       component: Content
+  //     }
+  //   ]
+  // },
+  // //面试题
+  // {
+  //   path: '/interview',
+  //   name: 'Interview',
+  //   component: Interview,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'Content',
+  //       component: Content
+  //     }
+  //   ]
+  // },
+  // //分类
+  // {
+  //   path: '/sort',
+  //   name: 'Sort',
+  //   component: Sort
+  // },
   {
     path: '/aboutme',
     name: 'About',

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import left from "./components/Left.vue";
+import left from "@/components/Left.vue";
 export default {
   components: {
     left,

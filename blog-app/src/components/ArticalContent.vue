@@ -699,21 +699,30 @@
 </template>
 <script>
 export default {
+  created(){
+    if(this.$route.path){
+      var dataIndex = this.$route.params.id
+      //axios
+      console.log("查询："+dataIndex);
+      
+    }
+  },
   data() {
     return {
-      articalTitle: "关于float",
+      
     };
   },
 };
 </script>
 
 <style lang="less" scoped>
-@import url("../../../assets/css/markdown.less");
+@import url("@/assets/css/markdown.less");
 .content {
   flex-grow: 1;
   background-color: rgba(255, 255, 255, 0.5);
   transition: all 0.5s;
   #write {
+      margin-top: 30px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.7);
     z-index: 0;
