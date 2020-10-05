@@ -36,12 +36,12 @@ library.add(
   faCommentAlt
   );
 import Panel from "@/components/Panel.vue";
-import ArticalContent from "@/components/ArticalContent.vue";
+// import ArticleContent from "@/components/ArticleContent.vue";
 import PanelViewArea from "@/components/PanelViewArea.vue";
 import Right from '@/components/Right.vue';
 
 Vue.component('panel',Panel);
-Vue.component('artical-content',ArticalContent);
+// Vue.component('article-content',ArticleContent);
 Vue.component('panel-view-area',PanelViewArea);
 Vue.component('right',Right);
 
@@ -55,3 +55,19 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+//刷新前保存vuex/刷新后读取刷新前vuex
+if (sessionStorage.getItem('store')) {
+  store.replaceState(
+    Object.assign({},
+      store.state,
+      JSON.parse(sessionStorage.getItem('store'))
+    )
+  )
+  sessionStorage.removeItem('store')
+}
+
+// 监听，在页面刷新时将vuex里的信息保存到sessionStorage里
+window.addEventListener('beforeunload', () => {
+  sessionStorage.setItem('store', JSON.stringify(store.state))
+})

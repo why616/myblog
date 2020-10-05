@@ -1,30 +1,177 @@
 <template>
- <div class="wrapper">
-     
-     <router-view class="router-view" />
-     <right />
+  <div class="wrapper">
+    <div class="all-artist" v-show="searchBase">
+      <h4>分类 {{ category }}下的文章</h4>
+      <panel-view-area>
+        <template>
+          <!-- v-for -->
+          <panel />
+          <panel />
+        </template>
+      </panel-view-area>
+    </div>
 
- </div>
+    <router-view />
+    <right />
+    
+  </div>
 </template>
 
 <script>
-
-import right from '@/components/Right.vue';
-
-
+import { mapState, mapMutations } from "vuex";
 export default {
- components:{
-     right
- }
-}
+  created() {
+    // //发送axios
+    // // var patt = /\/html$/;
+    // if (this.patt.test(this.$route.path)) {
+    //   //发送axios查目录
+    //   console.log("查目录");
+    //   this.changeShowContent(true);
+    // } else {
+    //   //发送axios查数据,由router-view接收params参数自己加载
+    //   console.log("查具体文章");
+    //  this.changeShowContent(false);
+    // }
+    //1.先判断是哪个分类
+    // var _path = this.$route.path;
+    // var patts = [
+    //   /\/html$/,
+    //   /\/css$/,
+    //   /\/js$/,
+    //   /\/vue$/,
+    //   /\/node$/,
+    //   /\/interview$/,
+    // ];
+    // patts.forEach((item) => {
+    //   if (item.test(_path)) {
+    //     var str = item.source;
+    //     this.category = str.slice(2,str.length-1).toUpperCase();
+    //     console.log("截取内容",this.category);
+    //     this.patt = item;
+    //   }
+    // });
+    // if (this.category) {
+    //   //   //发送axios，根据category查目录
+    //   console.log("查目录");
+    //   this.changeShowContent(true);
+    // } else {
+    //   console.log("查具体文章");
+    //   this.changeShowContent(false);
+    // }
+    // this.updatePage();
+  },
+  mounted() {
+    console.log("挂载");
+    window.addEventListener("popstate", this.listenPopState, false);
+  },
+  //   updated(){
+
+  //       console.log("update");
+  //     //   this.updatePage();
+  //   },
+  data() {
+    return {
+      //   searchBase: false,
+        thisCategory: this.$store.state.category,
+      patt: "",
+      articalList: [],
+    };
+  },
+    watch:{
+        thisCategory(){
+            this.updatePage();
+        }
+    },
+  computed: {
+    searchBase() {
+      
+      return this.$store.state.searchBase;
+    },
+     
+     category() {
+        //  debugger;
+      this.thisCategory = this.$store.state.category;
+      console.log("获取了当前category",this.thisCategory);
+
+      return this.$store.state.category;
+    },
+    // ...mapState({
+    //   category: (state) => {
+    //     return state.category;
+    //   },
+    // }),
+  },
+  methods: {
+    ...mapMutations(["changeShowContent"]),
+    listenPopState() {
+      this.patt.test(this.$route.path)
+        ? this.changeShowContent(true)
+        : this.changeShowContent(false);
+      // console.log(this.$route.path);
+    },
+    updatePage() {
+      var _path = this.$route.path;
+
+      var patts = [
+        /\/html$/,
+        /\/css$/,
+        /\/js$/,
+        /\/vue$/,
+        /\/node$/,
+        /\/interview$/,
+      ];
+      var ifCategory = false;
+      patts.forEach((item) => {
+        if (item.test(_path)) {
+          var str = item.source;
+          ifCategory = true;
+          this.thisCategory = str.slice(2, str.length - 1).toUpperCase();
+          console.log("截取内容", this.thisCategory);
+          this.patt = item;
+        }
+      });
+      if (ifCategory) {
+        //发送axios，根据category查目录
+        console.log("查目录，根据：",this.thisCategory);
+        this.changeShowContent(true);
+      } else {
+        console.log("查具体文章");
+        this.changeShowContent(false);
+      }
+    },
+  },
+  destroyed() {
+    //   console.log("已销毁");
+    window.removeEventListener("popstate", this.listenPopState, false);
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log("enter");
+
+    next();
+  },
+};
 </script>
 
 <style lang="less" scoped>
-    .router-view{
-        
+.wrapper {
+  display: flex;
+  .all-artist {
+    flex-grow: 1;
+    h4 {
+      text-align: center;
+      color: #fff;
+      font-size: 40px;
+      line-height: 1.8;
+
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 1px 1px 1px rgba(0, 0, 0, 1),
+        0px 0px 1px rgba(0, 0, 0, 1), 0px 0px 1px rgba(0, 0, 0, 1);
     }
-    .wrapper{
-       display: flex;
-       
+    .content {
+      padding-top: 20px;
+      width: 800px;
+      margin: auto;
     }
-</style>
+  }
+}
+</style> 
+ 

@@ -22,38 +22,38 @@
                 <span>分类</span>
               </a>
               <ul :class="{ show: sortShow }" @click.stop="changeShowContent(true)">
-                <li>
-                  <router-link to="/html">
+                <li @click="changeCategory('HTML')">
+                  <router-link to="/html" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Html</span>
                   </router-link>
                 </li>
-                <li>
-                  <router-link to="">
+                <li @click="changeCategory('CSS')">
+                  <router-link to="/css" > 
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Css</span>
                   </router-link>
                 </li>
-                <li>
-                  <router-link to="">
+                <li @click="changeCategory('JS')">
+                  <router-link to="/js" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Js</span>
                   </router-link>
                 </li>
-                <li>
-                  <router-link to="">
+                <li @click="changeCategory('VUE')">
+                  <router-link to="/vue" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Vue</span>
                   </router-link>
                 </li>
-                <li>
-                  <router-link to="">
+                <li @click="changeCategory('NODE')">
+                  <router-link to="/node">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Node.js</span>
                   </router-link>
                 </li>
-                <li>
-                  <router-link to="">
+                <li  @click="changeCategory('INTERVIEW')">
+                  <router-link to="/interview">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>面试题</span>
                   </router-link>
@@ -101,7 +101,7 @@ export default {
     toggleShow() {
       this.sortShow = !this.sortShow;
     },
-    ...mapMutations(['changeShowContent'])
+    ...mapMutations(['changeShowContent','changeCategory'])
   },
 };
 </script>

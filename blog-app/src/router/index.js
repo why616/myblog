@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue';
-import ArticalContent from '@/components/ArticalContent.vue';
+import ArticleContent from '@/components/ArticleContent.vue';
 // import Sort from '@/views/Sort.vue';
 import Main from '@/views/Main.vue'
-import Html from '@/views/sort/Html.vue'
+// import Html from '@/views/sort/Html.vue'
+import Sort from '@/views/sort/Sort.vue'
 
 Vue.use(VueRouter)
 
@@ -25,86 +26,81 @@ const routes = [
   {
     path: '/html',
     name: 'Html',
-    component: Html,
+    component: Sort,
     children:[
       {
         path:':id',
-        name:'ArticalContent',
-        component: ArticalContent
+        name:'htmlArticleContent',
+        component: ArticleContent
       }
     ]
   },
-  // //css
-  // {
-  //   path: '/css',
-  //   name: 'Css',
-  //   component: Css,
-  //   children:[
-  //     {
-  //       path:':id',
-  //       name:'Content',
-  //       component: Content
-  //     }
-  //   ]
-  // },
-  // //js
-  // {
-  //   path: '/js',
-  //   name: 'Js',
-  //   component: Js,
-  //   children:[
-  //     {
-  //       path:':id',
-  //       name:'Content',
-  //       component: Content
-  //     }
-  //   ]
-  // },
-  // //vue
-  // {
-  //   path: '/vue',
-  //   name: 'Vue',
-  //   component: Vue,
-  //   children:[
-  //     {
-  //       path:':id',
-  //       name:'Content',
-  //       component: Content
-  //     }
-  //   ]
-  // },
-  // //node
-  // {
-  //   path: '/node',
-  //   name: 'Node',
-  //   component: Node,
-  //   children:[
-  //     {
-  //       path:':id',
-  //       name:'Content',
-  //       component: Content
-  //     }
-  //   ]
-  // },
-  // //面试题
-  // {
-  //   path: '/interview',
-  //   name: 'Interview',
-  //   component: Interview,
-  //   children:[
-  //     {
-  //       path:':id',
-  //       name:'Content',
-  //       component: Content
-  //     }
-  //   ]
-  // },
-  // //分类
-  // {
-  //   path: '/sort',
-  //   name: 'Sort',
-  //   component: Sort
-  // },
+  //css
+  {
+    path: '/css',
+    name: 'Css',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'cssArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+  //js
+  {
+    path: '/js',
+    name: 'Js',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'jsArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+  //vue
+  {
+    path: '/vue',
+    name: 'Vue',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'vueArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+  //node
+  {
+    path: '/node',
+    name: 'Node',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'nodeArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+  //面试题
+  {
+    path: '/interview',
+    name: 'Interview',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'interviewArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+
   {
     path: '/aboutme',
     name: 'About',
