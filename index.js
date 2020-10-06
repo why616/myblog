@@ -32,14 +32,14 @@ app.post('/upload',upload.single("uploads"),function(req,res){
 })
 // console.log(path.join(__dirname, "page", "index.html"));
 
-// app.get('/*',function (req,res) {
+app.get('/*',function (req,res) {
    
-//     var page = fs.readFileSync(path.join(__dirname, "page", "index.html"));
-//     res.status(200).set({
-//         "Content-Type": "text/html; charset=utf-8"
-//     });
-//     res.send(page);
+    var page = fs.readFileSync(path.join(__dirname, "page", "index.html"));
+    res.status(200).set({
+        "Content-Type": "text/html; charset=utf-8"
+    });
+    res.send(page);
 
-// })
+})
 app.listen(8888);
 console.log("服务已开启...");
