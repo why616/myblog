@@ -13,7 +13,6 @@
 
     <router-view />
     <right />
-    
   </div>
 </template>
 
@@ -72,26 +71,27 @@ export default {
   data() {
     return {
       //   searchBase: false,
-        thisCategory: this.$store.state.category,
+      thisCategory: true,
+      loadAgain:true,
       patt: "",
       articalList: [],
     };
   },
-    watch:{
-        thisCategory(){
-            this.updatePage();
-        }
+  watch: {
+    thisCategory() {
+        // console.log("监听器：",this.loadAgain);
+        this.loadAgain ? this.updatePage() : this.loadAgain = true;
     },
+  },
   computed: {
     searchBase() {
-      
       return this.$store.state.searchBase;
     },
-     
-     category() {
-        //  debugger;
+
+    category() {
+      //  debugger;
       this.thisCategory = this.$store.state.category;
-      console.log("获取了当前category",this.thisCategory);
+      console.log("获取了当前category", this.thisCategory);
 
       return this.$store.state.category;
     },
@@ -102,14 +102,16 @@ export default {
     // }),
   },
   methods: {
-    ...mapMutations(["changeShowContent"]),
+    ...mapMutations(["changeShowContent", "changeCategory"]),
     listenPopState() {
       this.patt.test(this.$route.path)
         ? this.changeShowContent(true)
         : this.changeShowContent(false);
-      // console.log(this.$route.path);
+      console.log(this.$route.path);
     },
     updatePage() {
+      !this.thisCategory ? this.loadAgain = false:'';
+        // console.log("修改处：",this.loadAgain);
       var _path = this.$route.path;
 
       var patts = [
@@ -121,18 +123,20 @@ export default {
         /\/interview$/,
       ];
       var ifCategory = false;
-      patts.forEach((item) => {
+      patts.forEach((item) => { 
         if (item.test(_path)) {
           var str = item.source;
           ifCategory = true;
           this.thisCategory = str.slice(2, str.length - 1).toUpperCase();
           console.log("截取内容", this.thisCategory);
+          this.changeCategory(this.thisCategory);
           this.patt = item;
+
         }
       });
       if (ifCategory) {
         //发送axios，根据category查目录
-        console.log("查目录，根据：",this.thisCategory);
+        console.log("查目录，根据：", this.thisCategory);
         this.changeShowContent(true);
       } else {
         console.log("查具体文章");

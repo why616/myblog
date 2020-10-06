@@ -161,11 +161,12 @@ aside {
             color: #ffffff;
           }
         }
-        padding: 10px 20px;
+       
         font-size: 14px;
 
         a {
           display: block;
+           padding: 10px 20px;
           color: rgb(180, 182, 189);
           svg {
             padding: 0 20px 0 0;
@@ -173,9 +174,9 @@ aside {
         }
         ul {
           &.show {
-            li:first-child{
-               padding-top: 15px;
-            }
+            // li:first-child{
+            //    padding-top: 15px;
+            // }
            
             height: auto;
             opacity: 1;
