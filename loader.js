@@ -9,9 +9,11 @@ function registerController(app){
         var get = set.get;
         var post = set.post;
         for (const key in get) {
+            console.log("已配置：",key);
             app.get(key, get[key]);
         }
         for (const key in post) {
+            console.log("已配置：",key);
             app.post(key, post[key]);
         }
     })
