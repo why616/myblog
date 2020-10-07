@@ -20,14 +20,17 @@
     <div class="content">
       <div class="hot" :class="{ active: show == 0 }">
         <h3 class="header-name">随机文章</h3>
-        <article>
+        <router-link v-for="(item) in articleList" :key="item.id" :to="item.url" @click.native="changeShowContent(false)">
+          <article class="clearfix">
           <img src="../assets/img/akl.png" alt="" />
-          <section>文字溢出时，使用...表示还有其他的省略了</section>
+          <section>{{item.title}}</section>
         </article>
-        <article>
+        </router-link>
+        
+        <!-- <article>
           <img src="../assets/img/akl.png" alt="" />
           <section>white-space 设置文本内空格的效果</section>
-        </article>
+        </article> -->
       </div>
       <div class="sentence" :class="{ active: show == 1 }">
         <h3 class="header-name">每日一句</h3>
@@ -48,22 +51,31 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
     created(){
         console.log("侧边栏重新加载啦");
+        this.$axios.get(`/article/main`,{params:{pagenum:1,pagesize:5}})
+          .then(res => {
+            console.log(res);
+            let {data} = res;
+            this.articleList = data;
+          });
     },
   data() {
     return {
       show: 0,
       num0: 0,
       num1: 1,
-      num2: 2
+      num2: 2,
+      articleList:[]
     };
   },
   methods:{
       click(num){
           this.show = num;
-      }
+      },
+      ...mapMutations(['changeShowContent'])
     //   click2(){
     //       this.show = 2
     //   },
@@ -75,6 +87,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+a{
+  color:#000;
+  display: block;
+}
+.clearfix{
+  &::after{
+    content: '';
+    display: block;
+    clear:both;
+  }
+}
 .right {
   flex-shrink: 0;
   width: 240px;

@@ -3,7 +3,7 @@ var db = require('./dbutil');
 
 async function findAllByctimeDesc(pageNum, pageSize) {
     --pageNum;
-    var sql = `select id,title,views,tags,ctime,utime,summary from blog order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
+    var sql = `select id,title,views,tags,ctime,utime,summary,url from blog order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
     console.log("sql:",sql);
     return await queryBySQL(sql);
 
@@ -11,7 +11,7 @@ async function findAllByctimeDesc(pageNum, pageSize) {
 
 async function findByCategoryDesc(pageNum, pageSize, category){
     --pageNum;
-    var sql = `select id,title,views,tags,ctime,utime,summary from blog where tags = '${category}' order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
+    var sql = `select id,title,views,tags,ctime,utime,summary,url from blog where tags = '${category}' order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
     console.log("sql:",sql);
     return await queryBySQL(sql);
 }

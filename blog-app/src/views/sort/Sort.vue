@@ -5,10 +5,14 @@
       <panel-view-area>
         <template>
           <!-- v-for -->
-          <panel />
-          <panel />
+          <panel v-for="(item) in articleList" 
+                  :key="item.id" 
+                  :title="item.title" 
+                  :summary="item.summary" 
+                  :url="item.url"/>
         </template>
       </panel-view-area>
+      <!-- 分页目录 -->
     </div>
 
     <router-view />
@@ -74,7 +78,7 @@ export default {
       thisCategory: true,
       loadAgain:true,
       patt: "",
-      articalList: [],
+      articleList: [],
       patts : [
         /\/html$/,
         /\/css$/,
@@ -161,7 +165,13 @@ export default {
       if (ifCategory) {
         //发送axios，根据category查目录
         console.log("查目录，根据：", this.thisCategory);
-        this.changeShowContent(true);
+        this.$axios.get(`/article/${this.thisCategory}`,{params:{pagenum:1,pagesize:5}})
+          .then(res => {
+            console.log(res);
+            let {data} = res;
+            this.articleList = data;
+            this.changeShowContent(true);
+          });
       } else {
         console.log("查具体文章");
         this.changeShowContent(false);

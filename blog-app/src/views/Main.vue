@@ -8,8 +8,11 @@
     </div>
     <div class="content">
       <!-- <div class="mask"></div> -->
-      <panel />
-      <panel />
+      <panel v-for="(item) in articleList" 
+                  :key="item.id" 
+                  :title="item.title" 
+                  :summary="item.summary" 
+                  :url="item.url"/>
     </div>
   </div>
 </template>
@@ -17,6 +20,19 @@
 <script>
 
 export default {
+  created(){
+     this.$axios.get(`/article/main`,{params:{pagenum:1,pagesize:5}})
+          .then(res => {
+            console.log(res);
+            let {data} = res;
+            this.articleList = data;
+          });
+  },
+  data (){
+    return {
+      articleList: []
+    }
+  },
   components: {
    
   },

@@ -1,13 +1,13 @@
 <template>
-  <router-link class="panel" to="123456" append @click.native="changeShowContent(false)">
+  <router-link class="panel" :to="url" append @click.native="changeShowContent(false)">
     <div class="mask"></div>
     <div class="bg">
       <div class="bg-area"></div>
     </div>
     <div class="title">
-      <h3>这是一段关于该标签的介绍</h3>
+      <h3>{{title}}</h3>
       <div class="detail">
-        这是一段详细介绍，非常非常非常非常非常非常非常非常非常非常非常非常非常非常地详细
+        {{summary}}
       </div>
     </div>
   </router-link>
@@ -17,6 +17,7 @@
 import { mapMutations } from 'vuex'
 
 export default {
+  props:['title','summary','url'],
   computed:{
     // ...mapState(['searchBase'])
   },

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/css/reset.css';
+import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faFeatherAlt,
@@ -46,6 +47,8 @@ Vue.component('panel-view-area',PanelViewArea);
 Vue.component('right',Right);
 
 Vue.component('font-awesome-icon',FontAwesomeIcon);
+axios.defaults.baseURL = "http://127.0.0.1:8888";
+Vue.prototype.$axios = axios;
 
 
 Vue.config.productionTip = false
