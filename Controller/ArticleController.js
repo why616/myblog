@@ -7,6 +7,7 @@ var get = Controllers(prefix);
 var post = Controllers(prefix);
 
 get.add('/main',async function (req,res){
+    console.log('/main 接入');
     //true表示截取到参数部分后
     //url.parse方法是返回url各段参数，参数是其query属性
    let {pagenum,pagesize} = url.parse(req.url,true).query;
@@ -14,28 +15,51 @@ get.add('/main',async function (req,res){
 //    console.log("获取到的参数为：",pagenum,pagesize);
    var data = await articleService.getLatestArticlePage(pagenum,pagesize);
     res.send(data);
-})
-
-get.add('/html',function(req,res){
-    
 
 })
-get.add('/css',function(req,res){
-    
-})
-get.add('/js',function(req,res){
-    
-})
-get.add('/vue',function(req,res){
-    
-})
-get.add('/node',function(req,res){
-    
-})
-get.add('/interview',function(req,res){
-    
-})
 
+get.add('/html', async function(req,res){
+    console.log("/html 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'html');
+    res.send(data);
+})
+get.add('/css',async function(req,res){
+    console.log("/css 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'css');
+    res.send(data);
+})
+get.add('/js',async function(req,res){
+    console.log("/js 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'js');
+    res.send(data);
+})
+get.add('/vue',async function(req,res){
+    console.log("/vue 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'vue');
+    res.send(data);
+})
+get.add('/node',async function(req,res){
+    console.log("/node 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'node');
+    res.send(data);
+})
+get.add('/interview',async function(req,res){
+    console.log("/interview 接入");
+    let {pagenum,pagesize} = url.parse(req.url,true).query;
+    var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'interview');
+    res.send(data);
+})
+get.add('/content',async function(req, res){
+    console.log("/content 接入");
+    let {id} = url.parse(req.url,true).query;
+    var data = await articleService.getArticle(id);
+    res.send(data);
+})
 module.exports = {
     get: get.getMappings(),
     post: post.getMappings()

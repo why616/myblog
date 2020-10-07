@@ -1,9 +1,29 @@
+
 var db = require('./dbutil');
 
-function findAllByctimeDesc({ pageNum, pageSize }) {
-    var connection = db.createConnection();
+async function findAllByctimeDesc(pageNum, pageSize) {
     --pageNum;
     var sql = `select id,title,views,tags,ctime,utime,summary from blog order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
+    console.log("sql:",sql);
+    return await queryBySQL(sql);
+
+}
+
+async function findByCategoryDesc(pageNum, pageSize, category){
+    --pageNum;
+    var sql = `select id,title,views,tags,ctime,utime,summary from blog where tags = '${category}' order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
+    console.log("sql:",sql);
+    return await queryBySQL(sql);
+}
+
+async function findById(id){
+    var sql = `select id,title,views,tags,ctime,utime,content from blog where id = ${id} `;
+    console.log("sql:",sql);
+    return await queryBySQL(sql);
+}
+
+function queryBySQL(sql){
+    var connection = db.createConnection();
     return new Promise((resolve, reject) => {
         connection.query(sql, function (err, res) {
             if (err) {
@@ -16,9 +36,9 @@ function findAllByctimeDesc({ pageNum, pageSize }) {
             }
         });
     })
-
 }
-
 module.exports = {
-    findAllByctimeDesc
+    findAllByctimeDesc,
+    findByCategoryDesc,
+    findById
 }

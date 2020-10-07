@@ -57,6 +57,7 @@ div#nav {
   left: 0;
   right: 0;
   line-height: 50px;
+  height: 50px;
   position: fixed;
   z-index: 999;
   background-image: linear-gradient(to right, #065279, #7266ba);

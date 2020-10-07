@@ -75,6 +75,14 @@ export default {
       loadAgain:true,
       patt: "",
       articalList: [],
+      patts : [
+        /\/html$/,
+        /\/css$/,
+        /\/js$/,
+        /\/vue$/,
+        /\/node$/,
+        /\/interview$/,
+      ]
     };
   },
   watch: {
@@ -104,13 +112,25 @@ export default {
   methods: {
     ...mapMutations(["changeShowContent", "changeCategory"]),
     listenPopState() {
-      this.patt.test(this.$route.path)
-        ? this.changeShowContent(true)
-        : this.changeShowContent(false);
-      console.log(this.$route.path);
+      for(var i = 0;i<this.patts.length;i++){
+        if(this.patts[i].test(this.$route.path)){
+          this.changeShowContent(true);
+          var str = this.patts[i].source;
+          this.thisCategory = str.slice(2, str.length - 1).toUpperCase();
+          this.changeCategory(this.thisCategory);
+          console.log(this.$route.path);
+          return;
+        }
+      }
+      this.changeShowContent(false);
+  
+      // console.log(this.$route.path);
+      // this.patt.test(this.$route.path)
+      //   ? this.changeShowContent(true)
+      //   : this.changeShowContent(false);
     },
     updatePage() {
-      !this.thisCategory ? this.loadAgain = false:'';
+      // !this.thisCategory ? this.loadAgain = false:'';
         // console.log("修改处：",this.loadAgain);
       var _path = this.$route.path;
 
@@ -127,7 +147,11 @@ export default {
         if (item.test(_path)) {
           var str = item.source;
           ifCategory = true;
+          var old =  this.thisCategory;
           this.thisCategory = str.slice(2, str.length - 1).toUpperCase();
+          console.log(old,this.thisCategory);
+          old != this.thisCategory ? this.loadAgain = false:'';
+
           console.log("截取内容", this.thisCategory);
           this.changeCategory(this.thisCategory);
           this.patt = item;
@@ -145,7 +169,7 @@ export default {
     },
   },
   destroyed() {
-    //   console.log("已销毁");
+      console.log("已销毁");
     window.removeEventListener("popstate", this.listenPopState, false);
   },
   beforeRouteEnter(to, from, next) {
