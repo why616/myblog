@@ -17,7 +17,9 @@ import {
   faBullseye,
   faCandyCane,
   faCannabis,
-  faCommentAlt
+  faCommentAlt,
+  faAngleLeft,
+  faAngleRight
           } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -34,12 +36,16 @@ library.add(
   faBullseye,
   faCandyCane,
   faCannabis,
-  faCommentAlt
+  faCommentAlt,
+  faAngleLeft,
+  faAngleRight
+  
   );
 import Panel from "@/components/Panel.vue";
 // import ArticleContent from "@/components/ArticleContent.vue";
 import PanelViewArea from "@/components/PanelViewArea.vue";
 import Right from '@/components/Right.vue';
+
 
 Vue.component('panel',Panel);
 // Vue.component('article-content',ArticleContent);
@@ -53,11 +59,15 @@ Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false
 
+console.log("设置cache");
+Vue.prototype.$cache = {};
+
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
 
 //刷新前保存vuex/刷新后读取刷新前vuex
 if (sessionStorage.getItem('store')) {

@@ -14,6 +14,23 @@
                   :summary="item.summary" 
                   :url="item.url"/>
     </div>
+    <div class="patition">
+      <div class="pre">
+         <font-awesome-icon icon="angle-left" />
+      </div>
+      <div class="order">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="next">
+        <font-awesome-icon icon="angle-right" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -47,7 +64,7 @@ export default {
     color: transparent;
     text-align: center;
     padding: 10px;
-    background-image: url("../assets/img/316710.jpg");
+    background-image: url("../assets/img/316709.jpg");
     -webkit-background-clip: text;
     //  text-fill: transparent;
     background-position: center;
@@ -55,7 +72,7 @@ export default {
       font-size: 40px;
       line-height: 1.8;
 
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
     }
     p {
       color: #000000;
@@ -79,6 +96,9 @@ export default {
     //   height: 100%;
     //   z-index: 100;
     // }
+  }
+  .patition{
+
   }
 }
 </style> 

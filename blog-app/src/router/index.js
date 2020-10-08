@@ -10,9 +10,10 @@ import Sort from '@/views/sort/Sort.vue'
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/',
-    name: 'Home',
+    // name: 'Home',
     component: Home,
     children:[
       {
@@ -41,6 +42,11 @@ const routes = [
     name: 'Css',
     component: Sort,
     children:[
+      // {
+      //   path:'',
+      //   name:'cssCategory',
+      //   component:category
+      // },
       {
         path:':id',
         name:'cssArticleContent',
@@ -114,6 +120,13 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes
 })
 
