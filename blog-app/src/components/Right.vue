@@ -87,6 +87,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@media screen and (max-width: 1265px){
+    .right{
+      display: none;
+    }
+}
 a{
   color:#000;
   display: block;

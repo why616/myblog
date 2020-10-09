@@ -19,7 +19,9 @@ import {
   faCannabis,
   faCommentAlt,
   faAngleLeft,
-  faAngleRight
+  faAngleRight,
+  faList,
+  faCog
           } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -38,8 +40,9 @@ library.add(
   faCannabis,
   faCommentAlt,
   faAngleLeft,
-  faAngleRight
-  
+  faAngleRight,
+  faList,
+  faCog
   );
 import Panel from "@/components/Panel.vue";
 // import ArticleContent from "@/components/ArticleContent.vue";

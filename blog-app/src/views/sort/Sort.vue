@@ -207,10 +207,35 @@ export default {
     }
     .content {
       padding-top: 20px;
-      width: 800px;
+      widows: 800px;
       margin: auto;
     }
   }
+}
+@media only screen and (max-width: 1058px) {
+  .wrapper{
+    .all-artist{
+      width:65vw;
+      .content{
+        width: inherit;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .wrapper{
+    .all-artist{
+      h4{
+        font-size: 35px;
+      }
+      width:80vw;
+      .content{
+        width: inherit;
+      }
+    }
+  }
+  
 }
 </style> 
  

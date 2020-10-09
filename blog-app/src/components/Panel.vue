@@ -94,4 +94,17 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 760px) {
+  .panel{
+    .title {
+      padding: 80px 30px 1px 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      .detail {
+        opacity: 1;
+        transform: translateY(80px);
+      }
+    }
+  }
+}
 </style>

@@ -59,6 +59,7 @@ export default {
 <style lang="less" scoped>
 .wrapper {
   .public-excution {
+    margin:auto;
     margin-top: 30px;
 
     color: transparent;
@@ -97,9 +98,30 @@ export default {
     //   z-index: 100;
     // }
   }
-  .patition{
-
+}
+@media only screen and (max-width: 1058px) {
+  .wrapper{
+    .public-excution{
+      width:65vw;
+      
+    }
+    .content{
+        width: 65vw;
+    }
   }
+}
+
+@media only screen and (max-width: 760px) {
+  .wrapper{
+    .public-excution{
+      width:80vw;
+      
+    }
+    .content{
+          width: 90vw;
+      }
+  }
+  
 }
 </style> 
  

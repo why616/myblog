@@ -22,37 +22,37 @@
                 <span>分类</span>
               </a>
               <ul :class="{ show: sortShow }" @click.stop="changeShowContent(true)">
-                <li @click="changeCategory('HTML')">
+                <li @click="changeCategory('HTML'),closeLeft()">
                   <router-link to="/html" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Html</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('CSS')">
+                <li @click="changeCategory('CSS'),closeLeft()">
                   <router-link to="/css" > 
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Css</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('JS')">
+                <li @click="changeCategory('JS'),closeLeft()">
                   <router-link to="/js" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Js</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('VUE')">
+                <li @click="changeCategory('VUE'),closeLeft()">
                   <router-link to="/vue" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Vue</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('NODE')">
+                <li @click="changeCategory('NODE'),closeLeft()">
                   <router-link to="/node">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Node.js</span>
                   </router-link>
                 </li>
-                <li  @click="changeCategory('INTERVIEW')">
+                <li  @click="changeCategory('INTERVIEW'),closeLeft()">
                   <router-link to="/interview">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>面试题</span>
@@ -101,7 +101,13 @@ export default {
     toggleShow() {
       this.sortShow = !this.sortShow;
     },
-    ...mapMutations(['changeShowContent','changeCategory'])
+    ...mapMutations(['changeShowContent','changeCategory']),
+    
+    closeLeft(){
+      console.log("向父组件关闭");
+      this.$emit('clickItem',false);
+    }
+
   },
 };
 </script>
@@ -206,6 +212,48 @@ aside {
         }
       }
     }
+  }
+}
+@media only screen and (max-width: 760px) {
+  aside{
+    transform: translateX(0);
+    overflow-x: hidden;
+    position: fixed;
+    width: 75%;
+    top: 50px;
+    bottom: 0;
+    z-index: 999;
+    transition: transform .2s;
+    .hidden-scroll{
+      width: 109%;
+      top: 0;
+      .aside-wrapper{
+        width: auto;
+        &>*{
+           width: 100%;
+           font-size: 1.1em;
+        }
+        .header{
+          h1{
+            font-size: 1.1em;
+          }
+        }
+        .nav{
+          line-height: 1.3;
+          
+          h3{
+             font-size: 17px;
+          }
+          li{
+            font-size: 17px!important;
+            span{
+              font-size: 17px!important;
+            }
+          }
+        }
+      }
+    }
+    
   }
 }
 </style>
