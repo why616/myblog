@@ -75,6 +75,7 @@ get.add('/content',async function(req, res){
 
     res.send(data);
 })
+
 module.exports = {
     get: get.getMappings(),
     post: post.getMappings()

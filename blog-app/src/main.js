@@ -49,6 +49,14 @@ import Panel from "@/components/Panel.vue";
 import PanelViewArea from "@/components/PanelViewArea.vue";
 import Right from '@/components/Right.vue';
 
+import VMdEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+
+VMdEditor.use(githubTheme);
+
+Vue.use(VMdEditor);
+
 
 Vue.component('panel',Panel);
 // Vue.component('article-content',ArticleContent);

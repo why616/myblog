@@ -6,7 +6,7 @@ import ArticleContent from '@/components/ArticleContent.vue';
 import Main from '@/views/Main.vue'
 // import Html from '@/views/sort/Html.vue'
 import Sort from '@/views/sort/Sort.vue'
-
+import Editer from '@/views/Editer.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -114,6 +114,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/Editer',
+    name: 'Editer',
+    component: Editer
   }
 ]
 
