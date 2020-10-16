@@ -58,6 +58,18 @@
                     <span>面试题</span>
                   </router-link>
                 </li>
+                <li  @click="changeCategory('ALGORITHM'),closeLeft()">
+                  <router-link to="/algorithm">
+                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
+                    <span>算法题</span>
+                  </router-link>
+                </li>
+                <li  @click="changeCategory('WEBPROJECT'),closeLeft()">
+                  <router-link to="/webproject">
+                    <font-awesome-icon icon="bullseye"></font-awesome-icon>
+                    <span>前端工程化</span>
+                  </router-link>
+                </li>
               </ul>
             </li>
             <li>

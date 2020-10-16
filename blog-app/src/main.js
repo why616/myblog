@@ -1,9 +1,20 @@
+import './assets/css/reset.css';
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './assets/css/reset.css';
+
 import axios from 'axios';
+
+import { Input, MessageBox, Message  } from 'element-ui';
+
+Vue.use(Input);
+// Vue.use(MessageBox);
+// Vue.use(Message);
+
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$message = Message;
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faFeatherAlt,
@@ -49,13 +60,44 @@ import Panel from "@/components/Panel.vue";
 import PanelViewArea from "@/components/PanelViewArea.vue";
 import Right from '@/components/Right.vue';
 
-import VMdEditor from '@kangc/v-md-editor';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
+// import VMdEditor from '@kangc/v-md-editor';
+// import '@kangc/v-md-editor/lib/style/base-editor.css';
+// import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+// VMdEditor.use(githubTheme);
+// Vue.use(VMdEditor);
+
+
+//Editer
+import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
+import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
 import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+
+// codemirror 编辑器的相关资源
+import Codemirror from 'codemirror';
+// mode
+import 'codemirror/mode/markdown/markdown';
+// placeholder
+import 'codemirror/addon/display/placeholder';
+// active-line
+import 'codemirror/addon/selection/active-line';
+// scrollbar
+import 'codemirror/addon/scroll/simplescrollbars';
+import 'codemirror/addon/scroll/simplescrollbars.css';
+// style
+import 'codemirror/lib/codemirror.css';
+
+VMdEditor.Codemirror = Codemirror;
 
 VMdEditor.use(githubTheme);
 
 Vue.use(VMdEditor);
+
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+
+//Preview
+VMdPreview.use(githubTheme);
+Vue.use(VMdPreview);
 
 
 Vue.component('panel',Panel);

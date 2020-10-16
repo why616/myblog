@@ -27,6 +27,15 @@ button {
     outline: none;
     border: none;
 }
+.v-md-editor-preview.github-markdown-body ul{
+    list-style: disc;
+  }
+  .v-md-editor-preview.github-markdown-body ol{
+      list-style: decimal;
+  }
+  .v-md-editor-preview.github-markdown-body li{
+      list-style:inherit;
+  }
 *::-webkit-scrollbar {
     width: 8px!important;
     height: 8px!important;

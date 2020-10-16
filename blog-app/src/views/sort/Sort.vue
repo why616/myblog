@@ -87,6 +87,8 @@ export default {
         /\/vue$/,
         /\/node$/,
         /\/interview$/,
+        /\/algorithm$/,
+        /\/webproject$/,
       ]
     };
   },
@@ -146,6 +148,8 @@ export default {
         /\/vue$/,
         /\/node$/,
         /\/interview$/,
+        /\/algorithm$/,
+        /\/webproject$/,
       ];
       var ifCategory = false;
       patts.forEach((item) => { 

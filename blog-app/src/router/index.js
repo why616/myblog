@@ -106,7 +106,32 @@ const routes = [
       }
     ]
   },
-
+  //算法
+  {
+    path: '/algorithm',
+    name: 'algorithm',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'algorithmArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
+  //前端工程化/\/webproject$/,
+  {
+    path: '/webproject',
+    name: 'webproject',
+    component: Sort,
+    children:[
+      {
+        path:':id',
+        name:'webprojecthmArticleContent',
+        component: ArticleContent
+      }
+    ]
+  },
   {
     path: '/aboutme',
     name: 'About',

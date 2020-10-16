@@ -18,8 +18,13 @@ async function getArticle(id){
     // console.log("在service",data);
     return data;
 }
+async function addNewArticle(title,summary,content,category){
+   var res = articleDao.insertArticle(title,summary,content,category);
+   return res? {state:'ok',msg:'文章添加成功'}:{state:'error',msg:'添加失败'};
+}
 module.exports = {
     getLatestArticlePage,
     getCategoryArticlePage,
-    getArticle
+    getArticle,
+    addNewArticle
 }
