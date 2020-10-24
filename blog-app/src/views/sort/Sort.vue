@@ -2,7 +2,8 @@
   <div class="wrapper">
     <div class="all-artist" v-show="searchBase">
       <h4>分类 {{ category }}下的文章</h4>
-      <panel-view-area>
+      
+      <panel-view-area >
         <template>
           <!-- v-for -->
           <panel v-for="(item) in articleList" 
@@ -13,6 +14,13 @@
         </template>
       </panel-view-area>
       <!-- 分页目录 -->
+     <el-pagination
+      class="mypage"
+      layout="prev, pager, next"
+      @current-change="currentChange"
+      :page-size=5
+      :total="total">
+    </el-pagination>
     </div>
 
     <router-view />
@@ -89,7 +97,9 @@ export default {
         /\/interview$/,
         /\/algorithm$/,
         /\/webproject$/,
-      ]
+      ],
+      pagenum: 1,
+      total:5
     };
   },
   watch: {
@@ -135,6 +145,20 @@ export default {
       // this.patt.test(this.$route.path)
       //   ? this.changeShowContent(true)
       //   : this.changeShowContent(false);
+    },
+     currentChange(pagenumq){
+      console.log("新页面：",pagenumq);
+      this.pagenum = pagenumq;
+      this.updateCurrentPageArticle();
+    },
+    updateCurrentPageArticle (){
+      this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
+          .then(res => {
+            console.log(res);
+            let {data} = res;
+            this.articleList = data['articles'];
+            this.total = data['articleCounts'].total;
+          });
     },
     updatePage() {
       // !this.thisCategory ? this.loadAgain = false:'';
@@ -194,7 +218,21 @@ export default {
   },
 };
 </script>
-
+<style lang="less">
+  .mypage{
+    .btn-prev{
+      border-radius: 5px 0 0 5px;
+    }
+    ul{
+      li{
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+    }
+    .btn-next{
+      border-radius: 0 5px 5px 0;
+    }
+  }
+</style>
 <style lang="less" scoped>
 .wrapper {
   display: flex;
@@ -215,6 +253,12 @@ export default {
       margin: auto;
     }
   }
+  .mypage{
+      width: fit-content;
+      margin: auto;
+      border-radius: 5px;
+      
+    }
 }
 @media only screen and (max-width: 1058px) {
   .wrapper{

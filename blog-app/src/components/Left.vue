@@ -115,9 +115,15 @@ export default {
     },
     ...mapMutations(['changeShowContent','changeCategory']),
     
+
+    
     closeLeft(){
       console.log("向父组件关闭");
       this.$emit('clickItem',false);
+      // this.$store.commit({
+      //   type:'changeCategory',
+      //   newCategory: "HTML"
+      // })
     }
 
   },

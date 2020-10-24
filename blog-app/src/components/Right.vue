@@ -59,7 +59,8 @@ export default {
           .then(res => {
             console.log(res);
             let {data} = res;
-            this.articleList = data;
+            this.articleList = data['articles'];
+            // this.total = data['articleCounts'].total;
           });
     },
   data() {

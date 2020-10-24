@@ -15,7 +15,16 @@ get.add('/main',async function (req,res){
    let {pagenum,pagesize} = url.parse(req.url,true).query;
 //    console.log("路径参数为：",url.parse(req.url,true).query);
 //    console.log("获取到的参数为：",pagenum,pagesize);
-   var data = await articleService.getLatestArticlePage(pagenum,pagesize);
+   
+   var articlePromise = articleService.getLatestArticlePage(pagenum,pagesize);
+   var countsPromise = articleService.getArticleCounts();
+   
+    var [articles,articleCounts] = await Promise.all([articlePromise,countsPromise]);
+    var data = {
+        articles: articles,
+        articleCounts: articleCounts[0]
+    }
+    console.log(data);
     res.send(data);
 
 })

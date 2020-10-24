@@ -98,7 +98,7 @@ export default {
   padding-top: 50px;
   margin-left: 220px;
   min-height: 100%;
-  width:calc(100% - 220px);
+  // width:calc(100% - 220px);
 }
 
 div#nav {

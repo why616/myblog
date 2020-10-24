@@ -88,10 +88,21 @@ export default {
   transition: all 0.5s;
   .markdown{
     margin:20px 50px;
-     border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.7);
-
-    
+    .v-md-editor-preview.github-markdown-body{
+      border-radius: 8px;
+     background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+@media only screen and (max-width: 760px) {
+  .content{
+     width:95vw;
+    .markdown{
+      width:100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 10px;
+    }
     
   }
 }

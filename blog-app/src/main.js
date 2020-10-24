@@ -5,10 +5,12 @@ import router from './router'
 import store from './store'
 
 import axios from 'axios';
-
-import { Input, MessageBox, Message  } from 'element-ui';
+//element-ui
+import { Input, MessageBox, Message, Pagination  } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(Input);
+Vue.use(Pagination);
 // Vue.use(MessageBox);
 // Vue.use(Message);
 
@@ -55,6 +57,7 @@ library.add(
   faList,
   faCog
   );
+
 import Panel from "@/components/Panel.vue";
 // import ArticleContent from "@/components/ArticleContent.vue";
 import PanelViewArea from "@/components/PanelViewArea.vue";
@@ -106,7 +109,8 @@ Vue.component('panel-view-area',PanelViewArea);
 Vue.component('right',Right);
 
 Vue.component('font-awesome-icon',FontAwesomeIcon);
-axios.defaults.baseURL = "http://127.0.0.1:8888";
+axios.defaults.baseURL = "http://192.168.31.144:8888";
+// axios.defaults.baseURL = "http://127.0.0.1:8888"
 Vue.prototype.$axios = axios;
 
 

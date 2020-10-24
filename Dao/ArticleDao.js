@@ -6,8 +6,13 @@ async function findAllByctimeDesc(pageNum, pageSize) {
     var sql = `select id,title,views,tags,ctime,utime,summary,url from blog order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
     console.log("sql:",sql);
     return await queryBySQL(sql);
-
 }
+async function findAllCount(){
+    var sql = `select count(id) total from blog`;
+    console.log("sql:",sql);
+    return await queryBySQL(sql);
+}
+
 
 async function findByCategoryDesc(pageNum, pageSize, category){
     --pageNum;
@@ -47,6 +52,7 @@ function queryBySQL(sql,params){
                 throw new Error("数据库错误：", err);
             } else {
                 // console.log("OK");
+                console.log(res);
                 resolve(res);
             }
         });
@@ -56,5 +62,6 @@ module.exports = {
     findAllByctimeDesc,
     findByCategoryDesc,
     findById,
-    insertArticle
+    insertArticle,
+    findAllCount
 }

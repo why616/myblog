@@ -14,40 +14,61 @@
                   :summary="item.summary" 
                   :url="item.url"/>
     </div>
-    <div class="patition">
-      <div class="pre">
-         <font-awesome-icon icon="angle-left" />
-      </div>
-      <div class="order">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-      <div class="next">
-        <font-awesome-icon icon="angle-right" />
-      </div>
-    </div>
+    <el-pagination
+      class="mypage"
+      layout="prev, pager, next"
+      @current-change="currentChange"
+      :page-size=5
+      :total="total">
+    </el-pagination>
   </div>
 </template>
-
 <script>
 
 export default {
   created(){
-     this.$axios.get(`/article/main`,{params:{pagenum:1,pagesize:5}})
+     this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
           .then(res => {
             console.log(res);
             let {data} = res;
-            this.articleList = data;
+            this.articleList = data['articles'];
+            this.total = data['articleCounts'].total;
           });
+          //未初始化methods
+    // updateCurrentPageArticle();
   },
   data (){
     return {
-      articleList: []
+      articleList: [],
+      pagenum: 1,
+      total:5
+    }
+  },
+  methods:{
+    // prevClick(){
+    //   console.log("点到了前");
+    //   this.pagenum--;
+    //   this.updateCurrentPageArticle();
+
+    // },
+    // nextClick(){
+    //   console.log("点到了后");
+    //   this.pagenum++;
+    //   this.updateCurrentPageArticle();
+    // },
+    currentChange(pagenumq){
+      console.log("新页面：",pagenumq);
+      this.pagenum = pagenumq;
+      this.updateCurrentPageArticle();
+    },
+    updateCurrentPageArticle (){
+      this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
+          .then(res => {
+            console.log(res);
+            let {data} = res;
+            this.articleList = data['articles'];
+            this.total = data['articleCounts'].total;
+          });
     }
   },
   components: {
@@ -55,9 +76,26 @@ export default {
   },
 };
 </script>
-
+<style lang="less">
+  .mypage{
+    .btn-prev{
+      border-radius: 5px 0 0 5px;
+    }
+    ul{
+      li{
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+    }
+    .btn-next{
+      border-radius: 0 5px 5px 0;
+    }
+  }
+</style>
 <style lang="less" scoped>
 .wrapper {
+  display: block;
+  flex-grow: 1;
+  margin-bottom: 20px;
   .public-excution {
     margin:auto;
     margin-top: 30px;
@@ -69,6 +107,7 @@ export default {
     -webkit-background-clip: text;
     //  text-fill: transparent;
     background-position: center;
+
     h1 {
       font-size: 40px;
       line-height: 1.8;
@@ -85,12 +124,18 @@ export default {
       line-height: 1.8;
     }
   }
-  display: block;
-  flex-grow: 1;
+  
+  .mypage{
+      width: fit-content;
+      margin: auto;
+      border-radius: 5px;
+      
+    }
   .content {
     padding-top: 20px;
     width: 800px;
     margin: auto;
+    
     // .mask {
     //   position: absolute;
     //   width: 100%;
