@@ -24,7 +24,7 @@ get.add('/main',async function (req,res){
         articles: articles,
         articleCounts: articleCounts[0]
     }
-    console.log(data);
+    // console.log(data);
     res.send(data);
 
 })

@@ -35,7 +35,7 @@ async function insertArticle(title,summary,content,category){
     console.log(ret);
     sql = `update blog set url = '/${category}/${ret.insertId}' where id = ${ret.insertId}`;
     ret = await queryBySQL(sql);
-    console.log(ret);
+    console.log('insert:',ret);
     return true;
     //  await queryBySQL(sql);
 }
@@ -52,7 +52,7 @@ function queryBySQL(sql,params){
                 throw new Error("数据库错误：", err);
             } else {
                 // console.log("OK");
-                console.log(res);
+                // console.log(res);
                 resolve(res);
             }
         });

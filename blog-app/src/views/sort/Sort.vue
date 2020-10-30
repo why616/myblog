@@ -33,6 +33,7 @@ import { mapState, mapMutations } from "vuex";
 export default {
   created() {
     console.log("sort create");
+    
     // //发送axios
     // // var patt = /\/html$/;
     // if (this.patt.test(this.$route.path)) {
@@ -75,6 +76,7 @@ export default {
   mounted() {
     console.log("挂载");
     window.addEventListener("popstate", this.listenPopState, false);
+    // console.log(this);
   },
   //   updated(){
 
@@ -112,7 +114,9 @@ export default {
     searchBase() {
       return this.$store.state.searchBase;
     },
-
+    test(){
+      
+    },
     category() {
       //  debugger;
       this.thisCategory = this.$store.state.category;

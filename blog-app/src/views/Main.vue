@@ -27,15 +27,15 @@
 
 export default {
   created(){
-     this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
-          .then(res => {
-            console.log(res);
-            let {data} = res;
-            this.articleList = data['articles'];
-            this.total = data['articleCounts'].total;
-          });
-          //未初始化methods
-    // updateCurrentPageArticle();
+    //  this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
+    //       .then(res => {
+    //         console.log(res);
+    //         let {data} = res;
+    //         this.articleList = data['articles'];
+    //         this.total = data['articleCounts'].total;
+    //       });
+          
+    this.updateCurrentPageArticle();
   },
   data (){
     return {
@@ -61,7 +61,7 @@ export default {
       this.pagenum = pagenumq;
       this.updateCurrentPageArticle();
     },
-    updateCurrentPageArticle (){
+    updateCurrentPageArticle(){
       this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
           .then(res => {
             console.log(res);
