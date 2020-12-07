@@ -25,14 +25,18 @@ const routes = [
   },
   //html
   {
-    path: '/html',
-    name: 'Html',
+    path: '/:category',
+    name: 'Sort',
     component: Sort,
     children:[
       {
-        path:':id',
+        path:'',
         name:'htmlArticleContent',
         component: ArticleContent
+      },
+      {
+        path:':id',
+        name:''
       }
     ]
   },
