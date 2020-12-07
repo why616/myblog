@@ -23,7 +23,7 @@ const routes = [
       }
     ]
   },
-  //html
+  //category
   {
     path: '/:category',
     name: 'Sort',
@@ -31,111 +31,112 @@ const routes = [
     children:[
       {
         path:'',
-        name:'htmlArticleContent',
-        component: ArticleContent
+        name:'Category',
+        component: Category
       },
       {
         path:':id',
-        name:''
-      }
-    ]
-  },
-  //css
-  {
-    path: '/css',
-    name: 'Css',
-    component: Sort,
-    children:[
-      // {
-      //   path:'',
-      //   name:'cssCategory',
-      //   component:category
-      // },
-      {
-        path:':id',
-        name:'cssArticleContent',
+        name:'ArticleContent',
         component: ArticleContent
       }
     ]
   },
-  //js
-  {
-    path: '/js',
-    name: 'Js',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'jsArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
-  //vue
-  {
-    path: '/vue',
-    name: 'Vue',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'vueArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
-  //node
-  {
-    path: '/node',
-    name: 'Node',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'nodeArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
-  //面试题
-  {
-    path: '/interview',
-    name: 'Interview',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'interviewArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
-  //算法
-  {
-    path: '/algorithm',
-    name: 'algorithm',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'algorithmArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
-  //前端工程化/\/webproject$/,
-  {
-    path: '/webproject',
-    name: 'webproject',
-    component: Sort,
-    children:[
-      {
-        path:':id',
-        name:'webprojecthmArticleContent',
-        component: ArticleContent
-      }
-    ]
-  },
+  // //css
+  // {
+  //   path: '/css',
+  //   name: 'Css',
+  //   component: Sort,
+  //   children:[
+  //     // {
+  //     //   path:'',
+  //     //   name:'cssCategory',
+  //     //   component:category
+  //     // },
+  //     {
+  //       path:':id',
+  //       name:'cssArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //js
+  // {
+  //   path: '/js',
+  //   name: 'Js',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'jsArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //vue
+  // {
+  //   path: '/vue',
+  //   name: 'Vue',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'vueArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //node
+  // {
+  //   path: '/node',
+  //   name: 'Node',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'nodeArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //面试题
+  // {
+  //   path: '/interview',
+  //   name: 'Interview',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'interviewArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //算法
+  // {
+  //   path: '/algorithm',
+  //   name: 'algorithm',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'algorithmArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
+  // //前端工程化/\/webproject$/,
+  // {
+  //   path: '/webproject',
+  //   name: 'webproject',
+  //   component: Sort,
+  //   children:[
+  //     {
+  //       path:':id',
+  //       name:'webprojecthmArticleContent',
+  //       component: ArticleContent
+  //     }
+  //   ]
+  // },
   {
     path: '/aboutme',
     name: 'About',

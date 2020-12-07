@@ -22,21 +22,35 @@
       :total="total">
     </el-pagination>
     </div>
-
-    <router-view />
-    <right />
   </div>
 </template>
 
 <script>
 export default {
-    beforeRouterEnter(){
-        
+    props:['category'],
+    created(){
+        getCategoryData();
+    },
+    beforeRouteUpdate(){
+        getCategoryData();
     },
     data(){
-        return{
-            category:''
-
+        return {
+            articleList:[],
+            pagenum: 1,
+            total:5
+        }
+    },
+    methods:{
+        getCategoryData(){
+            this.$axios.get(`/article/${this.category}`,
+                {params:{pagenum:1,pagesize:5}}
+            )
+            .then(res => {
+                console.log(res);
+                let {data} = res;
+                this.articleList = data;
+            });
         }
     }
 }
