@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #relative {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: green;
+}
+#absolute {
+    width: 50px;
+    height: 50px;
+   
+    background: blue;
+}
+#transform {
+    background: red;
+    width: 50px;
+    height: 50px;
+    transform: scale(1.2);
+}
+#transform:hover{
+ will-change: height;
+  height:100px;
+}
+    </style>
+</head>
+<body>
+    <div id="relative">
+        <div id="transform">
+           
+        </div>
+         <div id="absolute"></div>
+      
+    </div>
+</body>
+</html>
