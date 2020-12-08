@@ -109,8 +109,8 @@ Vue.component('panel-view-area',PanelViewArea);
 Vue.component('right',Right);
 
 Vue.component('font-awesome-icon',FontAwesomeIcon);
-axios.defaults.baseURL = "http://192.168.31.144:8888";
-// axios.defaults.baseURL = "http://127.0.0.1:8888"
+// axios.defaults.baseURL = "http://192.168.31.144:8888";
+axios.defaults.baseURL = "http://127.0.0.1:8888"
 Vue.prototype.$axios = axios;
 
 

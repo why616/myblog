@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre{
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f6f8fa;
+            border-radius: 3px;
+        }
+        .wra{
+            width:calc(100% - 200px);
+          padding: 50px;
+            background-color: green;
+        }
+        .con{
+            padding:50px;
+            background-color: rebeccapurple;
+        }
+        code{
+            display: inline;
+    max-width: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #444d56;
+    line-height: inherit;
+    /* word-wrap: normal; */
+    background-color: initial;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    /* white-space: pre; */
+    /* word-break: normal; */
+    background: transparent;
+    border: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wra">
+        <div class="con">
+            <pre class="v-md-hljs-"><code>class Cat{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }//别加,
+        //别加function
+        Say(){
+            return '我的名字是' + this.name;
+        }
+    }
+    var cat1 = new Cat('有鱼',2);
+    console.log(cat1.Say());//我的名字是有鱼
+    //类本质上是函数，是构造函数的另一种写法
+    console.log(typeof Cat);// function
+    console.log(Cat.prototype.constructor ===Cat);//true
+    //也可以通过原型修改
+    /新增方法，实例对象也可以用_
+    _proto__访问/修改原型改/新增方法，实例对象也可以用__proto__访问/修改原型
+    </code></pre>
+        </div>
+    </div>
+</body>
+
+</html>

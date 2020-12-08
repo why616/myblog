@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <router-view />
+  <div class="wrapper">
+    <div class="all-artist">
+      <router-view />
+    </div>
     <right />
   </div>
 </template>
@@ -179,51 +181,52 @@ export default {
   display: flex;
   .all-artist {
     flex-grow: 1;
-    h4 {
-      text-align: center;
-      color: #fff;
-      font-size: 40px;
-      line-height: 1.8;
+    
+    // h4 {
+    //   text-align: center;
+    //   color: #fff;
+    //   font-size: 40px;
+    //   line-height: 1.8;
 
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 1px 1px 1px rgba(0, 0, 0, 1),
-        0px 0px 1px rgba(0, 0, 0, 1), 0px 0px 1px rgba(0, 0, 0, 1);
-    }
-    .content {
-      padding-top: 20px;
-      widows: 800px;
-      margin: auto;
-    }
+    //   text-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 1px 1px 1px rgba(0, 0, 0, 1),
+    //     0px 0px 1px rgba(0, 0, 0, 1), 0px 0px 1px rgba(0, 0, 0, 1);
+    // }
+    // .content {
+    //   padding-top: 20px;
+    //   // widows: 800px;
+    //   margin: auto;
+    // }
   }
-  .mypage{
-      width: fit-content;
-      margin: auto;
-      border-radius: 5px;
+//   .mypage{
+//       width: fit-content;
+//       margin: auto;
+//       border-radius: 5px;
       
-    }
-}
-@media only screen and (max-width: 1058px) {
-  .wrapper{
-    .all-artist{
-      width:65vw;
-      .content{
-        width: inherit;
-      }
-    }
-  }
-}
+//     }
+// }
+// @media only screen and (max-width: 1058px) {
+//   .wrapper{
+//     .all-artist{
+//       width:65vw;
+//       .content{
+//         width: inherit;
+//       }
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 760px) {
-  .wrapper{
-    .all-artist{
-      h4{
-        font-size: 35px;
-      }
-      width:80vw;
-      .content{
-        width: inherit;
-      }
-    }
-  }
+// @media only screen and (max-width: 760px) {
+//   .wrapper{
+//     .all-artist{
+//       h4{
+//         font-size: 35px;
+//       }
+//       width:80vw;
+//       .content{
+//         width: inherit;
+//       }
+//     }
+//   }
   
 }
 </style> 

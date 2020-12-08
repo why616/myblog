@@ -81,8 +81,9 @@ export default {
 <style lang="less" scoped>
 
 .content {
-  flex-grow: 1;
-  width:calc(100% - 240px);
+  padding-top: 20px;
+  margin: auto;
+  // width:calc(100% - 240px);
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.5);
   transition: all 0.5s;
@@ -94,7 +95,7 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 940px) {
   .content{
      width:95vw;
     .markdown{

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="all-artist">
-      <h4>分类 {{ category }}下的文章</h4>
+      <h4>分类 {{ $route.params.category }}下的文章</h4>
       
       <panel-view-area >
         <template>
@@ -27,12 +27,15 @@
 
 <script>
 export default {
-    props:['category'],
+    // props:['category'],
     created(){
-        getCategoryData();
+        this.getCategoryData();
     },
-    beforeRouteUpdate(){
-        getCategoryData();
+    beforeRouteUpdate(to, from, next){
+      next();
+      console.log("update",this.$route.params.category);
+      this.getCategoryData();
+        
     },
     data(){
         return {
@@ -43,7 +46,7 @@ export default {
     },
     methods:{
         getCategoryData(){
-            this.$axios.get(`/article/${this.category}`,
+            this.$axios.get(`/article/${this.$route.params.category}`,
                 {params:{pagenum:1,pagesize:5}}
             )
             .then(res => {
@@ -51,6 +54,20 @@ export default {
                 let {data} = res;
                 this.articleList = data;
             });
+        },
+        currentChange(pagenumq){
+          console.log("新页面：",pagenumq);
+          this.pagenum = pagenumq;
+          this.updateCurrentPageArticle();
+        },
+        updateCurrentPageArticle (){
+          this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
+              .then(res => {
+                console.log(res);
+                let {data} = res;
+                this.articleList = data['articles'];
+                this.total = data['articleCounts'].total;
+              });
         }
     }
 }
@@ -72,7 +89,7 @@ export default {
     }
     .content {
       padding-top: 20px;
-      widows: 800px;
+      width: 800px;
       margin: auto;
     }
   }

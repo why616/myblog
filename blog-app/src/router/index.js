@@ -7,6 +7,7 @@ import Main from '@/views/Main.vue'
 // import Html from '@/views/sort/Html.vue'
 import Sort from '@/views/sort/Sort.vue'
 import Editer from '@/views/Editer.vue'
+import Category from '@/views/Category.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,7 +26,7 @@ const routes = [
   },
   //category
   {
-    path: '/:category',
+    path: '/sort/:category',
     name: 'Sort',
     component: Sort,
     children:[
@@ -38,6 +39,7 @@ const routes = [
         path:':id',
         name:'ArticleContent',
         component: ArticleContent
+        
       }
     ]
   },
@@ -137,6 +139,10 @@ const routes = [
   //     }
   //   ]
   // },
+  {
+    path:'/sort',
+    redirect:'/sort/html'
+  },
   {
     path: '/aboutme',
     name: 'About',

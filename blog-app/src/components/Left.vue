@@ -21,51 +21,51 @@
                 <font-awesome-icon icon="cube"></font-awesome-icon>
                 <span>分类</span>
               </a>
-              <ul :class="{ show: sortShow }" @click.stop="changeShowContent(true)">
-                <li @click="changeCategory('HTML'),closeLeft()">
-                  <router-link to="/html" >
+              <ul :class="{ show: sortShow }" @click.stop>
+                <li @click="closeLeft()">
+                  <router-link to="/sort/html" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Html</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('CSS'),closeLeft()">
-                  <router-link to="/css" > 
+                <li @click="closeLeft()">
+                  <router-link to="/sort/css" > 
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Css</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('JS'),closeLeft()">
-                  <router-link to="/js" >
+                <li @click="closeLeft()">
+                  <router-link to="/sort/js" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Js</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('VUE'),closeLeft()">
-                  <router-link to="/vue" >
+                <li @click="closeLeft()">
+                  <router-link to="/sort/vue" >
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Vue</span>
                   </router-link>
                 </li>
-                <li @click="changeCategory('NODE'),closeLeft()">
-                  <router-link to="/node">
+                <li @click="closeLeft()">
+                  <router-link to="/sort/node">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>Node.js</span>
                   </router-link>
                 </li>
-                <li  @click="changeCategory('INTERVIEW'),closeLeft()">
-                  <router-link to="/interview">
+                <li  @click="closeLeft()">
+                  <router-link to="/sort/interview">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>面试题</span>
                   </router-link>
                 </li>
-                <li  @click="changeCategory('ALGORITHM'),closeLeft()">
-                  <router-link to="/algorithm">
+                <li  @click="closeLeft()">
+                  <router-link to="/sort/algorithm">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>算法题</span>
                   </router-link>
                 </li>
-                <li  @click="changeCategory('WEBPROJECT'),closeLeft()">
-                  <router-link to="/webproject">
+                <li  @click="closeLeft()">
+                  <router-link to="/sort/webproject">
                     <font-awesome-icon icon="bullseye"></font-awesome-icon>
                     <span>前端工程化</span>
                   </router-link>
@@ -113,7 +113,7 @@ export default {
     toggleShow() {
       this.sortShow = !this.sortShow;
     },
-    ...mapMutations(['changeShowContent','changeCategory']),
+    // ...mapMutations(['changeShowContent','changeCategory']),
     
 
     
@@ -232,7 +232,7 @@ aside {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 940px) {
   aside{
     transform: translateX(0);
     overflow-x: hidden;

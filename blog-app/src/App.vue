@@ -142,7 +142,7 @@ div#nav {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 940px) {
   .router-view {
     margin-left: auto;
   }
