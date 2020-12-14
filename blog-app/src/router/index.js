@@ -153,6 +153,12 @@ const routes = [
   },
   {
     path: '/Editer/:id',
+    name: 'updateArticle',
+    component: Editer,
+    props:true
+  },
+  {
+    path: '/Editer',
     name: 'Editer',
     component: Editer,
     props:true

@@ -75,7 +75,7 @@ export default {
     height: 300px;
     overflow: hidden;
     .bg-area {
-      background-image: url("../assets/img/175237.jpg");
+      background-image: url("../assets/img/175237.webp"),url("../assets/img/175237.jpg");
       background-size: cover;
       transition: all 0.2s;
       width: 100%;

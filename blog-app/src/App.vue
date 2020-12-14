@@ -88,7 +88,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("./assets/img/316709.jpg");
+    background-image: url("./assets/img/316709.webp"),url("../assets/img/316709.jpg");
     background-size: cover;
     // background-attachment: fixed;
     z-index: -1;

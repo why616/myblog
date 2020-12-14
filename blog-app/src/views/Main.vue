@@ -106,7 +106,7 @@ export default {
     color: transparent;
     text-align: center;
     padding: 10px;
-    background-image: url("../assets/img/316709.jpg");
+    background-image: url("../assets/img/316709.webp"),url("../assets/img/316709.jpg");
     -webkit-background-clip: text;
     //  text-fill: transparent;
     background-position: center;
