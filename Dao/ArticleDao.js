@@ -16,28 +16,35 @@ async function findAllCount(){
 
 async function findByCategoryDesc(pageNum, pageSize, category){
     --pageNum;
-    var sql = `select id,title,views,tags,ctime,utime,summary,url from blog where tags = '${category}' order by ctime desc limit ${pageNum * pageSize},${pageSize}`;
+    var sql = `select id,title,views,tags,ctime,utime,summary,url from blog where tags = '${category}' order by utime desc limit ${pageNum * pageSize},${pageSize}`;
     console.log("sql:",sql);
     return await queryBySQL(sql);
 }
 
 async function findById(id){
-    var sql = `select id,title,views,tags,ctime,utime,content from blog where id = ? `;
+    var sql = `select id,title,views,tags,ctime,utime,summary,content from blog where id = ? `;
+    var addViewsSql = 'update blog set views = views + 1 where id = ? ';
     console.log("sql:",sql);
+    console.log("addsql",addViewsSql);
+    queryBySQL(addViewsSql,[id]);
     return await queryBySQL(sql,[id]);
 }
 async function insertArticle(title,summary,content,category){
-    var time = +new Date();
     var sql = `insert into blog (title,summary,content,tags,views,ctime,utime) values ('${title}','${summary}',?,'${category}',0,now(),now()) `;
     console.log("sql:",sql);
 
     var ret = await queryBySQL(sql,[content]);
     console.log(ret);
-    sql = `update blog set url = '/${category}/${ret.insertId}' where id = ${ret.insertId}`;
+    sql = `update blog set url = '/sort/${category}/${ret.insertId}' where id = ${ret.insertId}`;
     ret = await queryBySQL(sql);
     console.log('insert:',ret);
+    
     return true;
     //  await queryBySQL(sql);
+}
+async function updateArticle(...params){
+    var sql = `update blog set title=?,summary=?,content=?,tags=?,utime=now() where id = ?`;
+    return await queryBySQL(sql,params);
 }
 
 function queryBySQL(sql,params){
@@ -63,5 +70,6 @@ module.exports = {
     findByCategoryDesc,
     findById,
     insertArticle,
-    findAllCount
+    findAllCount,
+    updateArticle
 }

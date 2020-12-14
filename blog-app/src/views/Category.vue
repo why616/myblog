@@ -10,7 +10,10 @@
                   :key="item.id" 
                   :title="item.title" 
                   :summary="item.summary" 
-                  :url="item.url"/>
+                  :url="item.url"
+                  :ctime="item.ctime"
+                  :utime="item.utime"
+                  :views="item.views"/>
         </template>
       </panel-view-area>
       <!-- 分页目录 -->
@@ -50,8 +53,9 @@ export default {
                 {params:{pagenum:1,pagesize:5}}
             )
             .then(res => {
-                console.log(res);
+
                 let {data} = res;
+                 console.log("articleList",data);
                 this.articleList = data;
             });
         },
@@ -106,6 +110,7 @@ export default {
       width:65vw;
       .content{
         width: inherit;
+        
       }
     }
   }

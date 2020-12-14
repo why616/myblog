@@ -111,6 +111,18 @@ get.add('/webproject',async function(req, res){
     var data = await articleService.getCategoryArticlePage(pagenum,pagesize,'webproject');
     res.send(data);
 });
+post.add('/updatearticle',async function(req, res){
+    console.log("/updatearticle 接入");
+    var query = req.body;
+    var ret =  await articleService.updateArticle(
+            query['title'],
+            query['summary'], 
+            query['content'],
+            query['category'],
+            query['id']
+        );
+    res.send(ret);             
+});
 
 
 module.exports = {

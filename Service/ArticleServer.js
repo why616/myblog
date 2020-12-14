@@ -19,17 +19,22 @@ async function getArticle(id){
     return data;
 }
 async function addNewArticle(title,summary,content,category){
-   var res = articleDao.insertArticle(title,summary,content,category);
+   var res = await articleDao.insertArticle(title,summary,content,category);
    return res? {state:'ok',msg:'文章添加成功'}:{state:'error',msg:'添加失败'};
 }
 async function getArticleCounts(){
    var counts = await articleDao.findAllCount();
    return counts;
 }
+async function updateArticle(title,summary,content,category,id){
+    var res = await articleDao.updateArticle(title,summary,content,category,id);
+    return res? {state:'ok',msg:'文章更新成功'}:{state:'error',msg:'更新失败'};
+}
 module.exports = {
     getLatestArticlePage,
     getCategoryArticlePage,
     getArticle,
     addNewArticle,
-    getArticleCounts
+    getArticleCounts,
+    updateArticle
 }

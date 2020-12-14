@@ -11,6 +11,7 @@
         <el-input
           type="textarea"
           :rows="2"
+          maxlength:89
           placeholder="请输入简介"
           v-model="summary">
            <template slot="prepend">简介</template>
@@ -24,6 +25,7 @@
         @save="saveArticleToServer"
         :disabled-menus="[]"
         @upload-image="handleUploadImage"
+        v-model="content"
       ></v-md-editor>
     </div>
   </div>
@@ -31,24 +33,43 @@
 
 <script>
 export default {
+  
+  props:['id'],
+  created(){
+    if(this.id){
+      this.$axios
+        .get(`/article/content`, { params: { id: this.id } })
+        .then((res) => {
+          console.log(res);
+          let { data } = res;
+          this.title = data[0].title;
+          this.summary = data[0].summary;
+          this.content = data[0].content;
+          this.tags = data[0].tags;
+        });
+    }
+  },
   data(){
     return {
       title:'',
-      summary:''
+      summary:'',
+      content:'',
+      tags:''
+
     }
   },
   methods: {
      saveArticleToServer(text, html) {
-
-      // console.log(text, html);
-       this.$prompt('请输入分类', '选择分类', {
+       if(this.id){
+         this.$prompt('请输入分类', '选择分类', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
+          inputValue:this.tags
           // inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
           // inputErrorMessage: '邮箱格式不正确'
         }).then(async ({ value }) => {
           //这里写axios发送~~~~~~~~~~~~
-         var {data:ret} = await this.$axios.post('/article/addnewarticle',{title:this.title,summary:this.summary,content:text,category:value});
+         var {data:ret} = await this.$axios.post('/article/updatearticle',{id:this.id,title:this.title,summary:this.summary,content:text,category:value});
          console.log(ret);
          if(ret.state == 'ok'){
            this.$message.success({
@@ -56,21 +77,57 @@ export default {
             duration:1500
           });
          }else{
-           this.$message.error({
-            message:ret.msg,
-            duration:1500
-          });
+           
          }
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            duration:1500,
-            message: '再改改'
-          });       
+        }).catch((msg) => {
+          if(msg == 'cancel'){
+            this.$message({
+              type: 'info',
+              duration:1500,
+              message: '再改改'
+            });  
+          }else{
+            this.$message.error({
+              message:msg,
+              duration:1500
+            });
+          } 
         });
+       }else{
+         // console.log(text, html);
+        this.$prompt('请输入分类', '选择分类', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消'
+            // inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+            // inputErrorMessage: '邮箱格式不正确'
+          }).then(async ({ value }) => {
+            //这里写axios发送~~~~~~~~~~~~
+          var {data:ret} = await this.$axios.post('/article/addnewarticle',{title:this.title,summary:this.summary,content:text,category:value});
+          console.log(ret);
+          if(ret.state == 'ok'){
+            this.$message.success({
+              message:ret.msg,
+              duration:1500
+            });
+          }else{
+            this.$message.error({
+              message:ret.msg,
+              duration:1500
+            });
+          }
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              duration:1500,
+              message: '再改改'
+            });       
+          });
+       }
+      
       
 
     },
+    
     async handleUploadImage(event, insertImage, files) {
       // 拿到 files 之后上传到文件服务器，然后向编辑框中插入对应的内容
       console.log(files);

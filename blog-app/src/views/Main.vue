@@ -12,7 +12,10 @@
                   :key="item.id" 
                   :title="item.title" 
                   :summary="item.summary" 
-                  :url="item.url"/>
+                  :url="item.url"
+                  :ctime="item.ctime"
+                  :utime="item.utime"
+                  :views="item.views"/>
     </div>
     <el-pagination
       class="mypage"
@@ -64,7 +67,7 @@ export default {
     updateCurrentPageArticle(){
       this.$axios.get(`/article/main`,{params:{pagenum:this.pagenum,pagesize:5}})
           .then(res => {
-            console.log(res);
+            console.log("main",res);
             let {data} = res;
             this.articleList = data['articles'];
             this.total = data['articleCounts'].total;

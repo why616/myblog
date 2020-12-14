@@ -181,7 +181,7 @@ export default {
   display: flex;
   .all-artist {
     flex-grow: 1;
-    
+    width: calc(100% - 240px);
     // h4 {
     //   text-align: center;
     //   color: #fff;

@@ -81,7 +81,7 @@ export default {
 <style lang="less" scoped>
 
 .content {
-  padding-top: 20px;
+  padding: 20px 0;
   margin: auto;
   // width:calc(100% - 240px);
   box-sizing: border-box;
@@ -95,7 +95,7 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 760px) {
   .content{
      width:95vw;
     .markdown{
