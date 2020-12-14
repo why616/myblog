@@ -1,21 +1,21 @@
 import './assets/css/reset.css';
-import Vue from 'vue'
+// import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
 import axios from 'axios';
 //element-ui
-import { Input, MessageBox, Message, Pagination  } from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+// import { Input, MessageBox, Message, Pagination  } from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.use(Input);
-Vue.use(Pagination);
+// Vue.use(Input);
+// Vue.use(Pagination);
 // Vue.use(MessageBox);
 // Vue.use(Message);
 
-Vue.prototype.$prompt = MessageBox.prompt;
-Vue.prototype.$message = Message;
+// Vue.prototype.$prompt = MessageBox.prompt;
+// Vue.prototype.$message = Message;
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
