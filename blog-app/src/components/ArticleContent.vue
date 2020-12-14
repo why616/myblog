@@ -6,6 +6,11 @@
   </div>
 </template>
 <script>
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+//Preview
+VMdPreview.use(githubTheme);
 // import "@/assets/css/markdown.less";
 export default {
   
@@ -35,6 +40,9 @@ export default {
       content: "",
       dataIndex: 0,
     };
+  },
+  components:{
+    VMdPreview
   },
   watch: {
     $route(to, from) {
@@ -95,7 +103,7 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
   .content{
      width:95vw;
     .markdown{

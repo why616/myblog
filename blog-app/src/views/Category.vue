@@ -116,7 +116,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
   .wrapper{
     .all-artist{
       h4{

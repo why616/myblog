@@ -32,6 +32,11 @@
 </template>
 
 <script>
+import VMdEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+VMdEditor.use(githubTheme);
+
 export default {
   
   props:['id'],
@@ -57,6 +62,9 @@ export default {
       tags:''
 
     }
+  },
+  components:{
+    VMdEditor
   },
   methods: {
      saveArticleToServer(text, html) {
@@ -193,7 +201,7 @@ export default {
     width: 70vw;
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
     .content {
         .editer-content {
             width: 95vw;

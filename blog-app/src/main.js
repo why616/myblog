@@ -75,36 +75,36 @@ import Right from '@/components/Right.vue';
 
 
 //Editer
-import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
-import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
-import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+// import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
+// import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
+// import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
 
-// codemirror 编辑器的相关资源
-import Codemirror from 'codemirror';
-// mode
-import 'codemirror/mode/markdown/markdown';
-// placeholder
-import 'codemirror/addon/display/placeholder';
-// active-line
-import 'codemirror/addon/selection/active-line';
-// scrollbar
-import 'codemirror/addon/scroll/simplescrollbars';
-import 'codemirror/addon/scroll/simplescrollbars.css';
-// style
-import 'codemirror/lib/codemirror.css';
+// // codemirror 编辑器的相关资源
+// import Codemirror from 'codemirror';
+// // mode
+// import 'codemirror/mode/markdown/markdown';
+// // placeholder
+// import 'codemirror/addon/display/placeholder';
+// // active-line
+// import 'codemirror/addon/selection/active-line';
+// // scrollbar
+// import 'codemirror/addon/scroll/simplescrollbars';
+// import 'codemirror/addon/scroll/simplescrollbars.css';
+// // style
+// import 'codemirror/lib/codemirror.css';
 
-VMdEditor.Codemirror = Codemirror;
+// VMdEditor.Codemirror = Codemirror;
 
-VMdEditor.use(githubTheme);
+// VMdEditor.use(githubTheme);
 
-Vue.use(VMdEditor);
+// Vue.use(VMdEditor);
 
-import VMdPreview from '@kangc/v-md-editor/lib/preview';
-import '@kangc/v-md-editor/lib/style/preview.css';
+// import VMdPreview from '@kangc/v-md-editor/lib/preview';
+// import '@kangc/v-md-editor/lib/style/preview.css';
 
-//Preview
-VMdPreview.use(githubTheme);
-Vue.use(VMdPreview);
+// //Preview
+// VMdPreview.use(githubTheme);
+// Vue.use(VMdPreview);
 
 
 Vue.component('panel',Panel);

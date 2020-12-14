@@ -232,7 +232,7 @@ aside {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
   aside{
     transform: translateX(0);
     overflow-x: hidden;
