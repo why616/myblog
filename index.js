@@ -41,7 +41,7 @@ app.all("*",function(req,res,next){
 
 loader(app);
 
-var host = 'http://127.0.0.1:8888';
+var host = 'http://121.196.160.121';
 app.post('/uploads/img',imgUpload.single("imgs"),function(req,res){
     console.log("得到了文件：",req.file.filename);
     res.send( host + '/img/uploads/' + req.file.filename );
@@ -64,5 +64,5 @@ app.get('/*',function (req,res) {
     res.send(page);
 
 })
-app.listen(8888);
+app.listen(80);
 console.log("服务已开启...");
